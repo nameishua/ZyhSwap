@@ -1,8 +1,9 @@
 import Vue from 'vue';
+
 import Vuex from 'vuex';
-import Web3 from 'web3';
-import { createStore } from 'vuex';
 import createPersistedState from 'vuex-persistedstate';
+import Web3 from 'web3';
+
 //模块化store
 // import Sys from '../components/modal/store';
 Vue.use(Vuex);

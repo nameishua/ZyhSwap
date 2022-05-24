@@ -5,6 +5,7 @@ import Vue from 'vue';
 
 import Vant from 'vant';
 import VueI18n from 'vue-i18n';
+import VueParticles from 'vue-particles';
 
 import Message from '@/components/zyhToast/index';
 
@@ -13,7 +14,7 @@ import router from './router';
 import store from './store';
 
 Vue.use(VueI18n);
-
+Vue.use(VueParticles);
 const i18n = new VueI18n({
   locale: 'en', //切换语言
   messages: {

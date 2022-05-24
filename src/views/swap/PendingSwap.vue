@@ -8,7 +8,9 @@
       <div v-if="pendingDetail.status == 0">
         <img class="wait" src="@/assets/img/wait.png" alt="" />
         <div class="word1">{{ $t('lang.swap19') }}</div>
-        <div class="word2">{{ $t('lang.swap20') }} {{ pendingDetail.fromInput }} {{ fromCur.symbol }} {{ $t('lang.swap21') }} {{ pendingDetail.toInput }} {{ toCur.symbol }}</div>
+        <div class="word2">{{ $t('lang.swap20') }} {{ pendingDetail.fromInput }} {{ fromCur.symbol }} {{
+            $t('lang.swap21')
+        }} {{ pendingDetail.toInput }} {{ toCur.symbol }}</div>
         <div class="word3">{{ $t('lang.swap22') }}</div>
       </div>
       <div v-if="pendingDetail.status == 1">
@@ -44,6 +46,7 @@ export default {
 <style lang="less" scoped>
 .pendingSwap {
   width: 350px;
+
   .van-dialog__header {
     width: 100%;
     text-align: center;
@@ -54,6 +57,7 @@ export default {
     background: linear-gradient(90deg, #f1eaf1 0%, #eaeef7 100%);
     font-weight: bold;
     font-size: 20px;
+
     .cancel {
       width: 20px;
       height: 20px;
@@ -63,19 +67,23 @@ export default {
       cursor: pointer;
     }
   }
+
   .btContent {
     width: 100%;
     padding: 0 16px 16px;
     text-align: center;
+
     .wait {
       width: 250px;
     }
+
     .word1 {
       font-weight: bold;
       font-size: 20px;
       line-height: 28px;
       color: #372590;
     }
+
     .word2 {
       font-weight: bold;
       font-size: 16px;
@@ -83,12 +91,14 @@ export default {
       color: #372590;
       margin-top: 12px;
     }
+
     .word3 {
       font-size: 12px;
       line-height: 17px;
       color: #9d97ba;
       margin-top: 12px;
     }
+
     .word4 {
       font-weight: bold;
       font-size: 14px;
@@ -96,6 +106,7 @@ export default {
       margin-top: 12px;
       color: #48dae9;
     }
+
     .closeBtn {
       height: 58px;
       line-height: 58px;
@@ -103,6 +114,7 @@ export default {
       margin-top: 18px;
     }
   }
+
   .tokenInfo {
     display: flex;
     align-items: center;
@@ -111,9 +123,11 @@ export default {
     .leftItem {
       display: flex;
       align-items: center;
+
       .input {
         margin-left: 5px;
       }
+
       .tokenImg {
         height: 30px;
         width: 30px;
@@ -121,11 +135,13 @@ export default {
       }
     }
   }
+
   .wrap {
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
+
   .confirmBtn {
     width: 100%;
     margin-top: 22px;

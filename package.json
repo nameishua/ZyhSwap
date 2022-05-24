@@ -2,11 +2,11 @@
   "name": "ZyhSwap",
   "version": "1.0.0",
   "private": true,
-  "homepage":"https://nameishua.github.io/ZyhSwap",
+  "homepage": "https://nameishua.github.io/ZyhSwap",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "predeploy":"npm run build",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
   "dependencies": {
@@ -16,6 +16,7 @@
     "bn.js": "^5.2.0",
     "core-js": "^3.6.5",
     "decimal.js": "^10.3.1",
+    "gh-pages": "^4.0.0",
     "jsbi": "^3.2.4",
     "lodash": "^4.17.21",
     "vant": "^2.12.26",
@@ -40,6 +41,7 @@
     "prettier": "^2.4.1",
     "style-resources-loader": "^1.4.1",
     "vue-cli-plugin-style-resources-loader": "^0.1.5",
+    "vue-particles": "^1.0.9",
     "vue-template-compiler": "^2.6.11"
   }
 }

@@ -75,5 +75,8 @@ export default {
       padding-top: 24px;
     }
   }
+  .particles {
+    position: relative;
+  }
 }
 </style>

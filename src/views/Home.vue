@@ -1,8 +1,8 @@
 <template>
   <div class="home">
-    <!-- <div class="nav">
+     <!-- <div class="nav">
       <div :class="['navItem', selectdIndex == index ? 'selectd' : '']" v-for="(item, index) in list" :key="index" @click="handleSelectd(index, item.path)">{{ item.name }}</div>
-    </div> -->
+    </div>  -->
     <div class="content">
       <div class="router"><router-view /></div>
     </div>

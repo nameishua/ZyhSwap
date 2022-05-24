@@ -1,6 +1,17 @@
 const path = require('path');
 module.exports = {
-    publicPath: './', //配置本地引用目录文件,如不配置，默认为`/`
+    //选项
+    //基本路径
+    publicPath: "./",
+    //构建时的输出目录
+    outputDir: "build",
+    //放置静态资源的目录
+    assetsDir: "static",
+    //html 的输出路径
+    indexPath: "index.html",
+    //文件名哈希
+    filenameHashing: true,
+
     pluginOptions: {
         'style-resources-loader': {
             preProcessor: 'less',

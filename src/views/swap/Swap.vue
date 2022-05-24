@@ -106,12 +106,12 @@ import TransactionRecord from '@/views/swap/TransactionRecord.vue';
 import { mapState } from 'vuex';
 import { formatAmount, parseAmount, accMul, accDiv, toFixed, accAdd, accSub, accGt, significantDigits, gasProcessing } from '@/utils/format.js';
 import { isBnb } from '@/utils/verify.js';
-import { getJackRouterAddress } from '@/utils/addressHelp';
+import { getzyhRouterAddress } from '@/utils/addressHelp';
 import { MaxUint256 } from '@ethersproject/constants';
-import { getErc20Contract, getJackRouterContract, getJackPairContract, getJackFactoryContract } from '@/utils/contractHelp';
+import { getErc20Contract, getzyhRouterContract, getzyhPairContract, getzyhFactoryContract } from '@/utils/contractHelp';
 import SettingsModal from '@/components/SettingsModal.vue';
 import { simpleRpcProvider } from '@/utils/provider';
-import { useJackRouterContract, useErc20Contract, useWethContract } from '@/utils/useContract';
+import { usezyhRouterContract, useErc20Contract, useWethContract } from '@/utils/useContract';
 import { getAllPair } from '@/utils/pairHelp';
 import web3 from 'web3';
 export default {
@@ -383,11 +383,11 @@ export default {
       }
     },
     async swapExactETHForTokens(amountIn, amountOutMin, path, to, deadline) {
-      const jackRouterContract = useJackRouterContract();
-      const gas = await jackRouterContract.methods.swapExactETHForTokens(amountOutMin, path, to, deadline).estimateGas({ from: this.account, value: amountIn });
+      const zyhRouterContract = usezyhRouterContract();
+      const gas = await zyhRouterContract.methods.swapExactETHForTokens(amountOutMin, path, to, deadline).estimateGas({ from: this.account, value: amountIn });
       this.swapDetailShow = false;
       this.pendingDetailShow = true;
-      jackRouterContract.methods
+      zyhRouterContract.methods
         .swapExactETHForTokens(amountOutMin, path, to, deadline)
         .send({ from: this.account, value: amountIn, gas: gasProcessing(gas), gasPrice: web3.utils.numberToHex(this.gasPrice) })
         .on('transactionHash', hash => {
@@ -410,15 +410,15 @@ export default {
         });
     },
     async swapETHForExactTokens(amountOut, amountInMax, path, to, deadline) {
-      const jackRouterContract = useJackRouterContract();
-      const gas = await jackRouterContract.methods
+      const zyhRouterContract = usezyhRouterContract();
+      const gas = await zyhRouterContract.methods
         .swapETHForExactTokens(amountOut, path, to, deadline)
         .estimateGas({ from: this.account, value: amountInMax })
         .catch(async e => {
-          const gas = await jackRouterContract.methods.swapExactETHForTokensSupportingFeeOnTransferTokens(amountOut, path, to, deadline).estimateGas({ from: this.account, value: amountInMax });
+          const gas = await zyhRouterContract.methods.swapExactETHForTokensSupportingFeeOnTransferTokens(amountOut, path, to, deadline).estimateGas({ from: this.account, value: amountInMax });
           this.swapDetailShow = false;
           this.pendingDetailShow = true;
-          jackRouterContract.methods
+          zyhRouterContract.methods
             .swapExactETHForTokensSupportingFeeOnTransferTokens(amountOut, path, to, deadline)
             .send({ from: this.account, value: amountInMax, gas: gasProcessing(gas), gasPrice: web3.utils.numberToHex(this.gasPrice) })
             .on('transactionHash', hash => {
@@ -442,7 +442,7 @@ export default {
         });
       this.swapDetailShow = false;
       this.pendingDetailShow = true;
-      jackRouterContract.methods
+      zyhRouterContract.methods
         .swapETHForExactTokens(amountOut, path, to, deadline)
         .send({ from: this.account, value: amountInMax, gas: gasProcessing(gas), gasPrice: web3.utils.numberToHex(this.gasPrice) })
         .on('transactionHash', hash => {
@@ -465,11 +465,11 @@ export default {
         });
     },
     async swapExactTokensForETH(amountIn, amountOutMin, path, to, deadline) {
-      const jackRouterContract = useJackRouterContract();
-      const gas = await jackRouterContract.methods.swapExactTokensForETH(amountIn, amountOutMin, path, to, deadline).estimateGas({ from: this.account });
+      const zyhRouterContract = usezyhRouterContract();
+      const gas = await zyhRouterContract.methods.swapExactTokensForETH(amountIn, amountOutMin, path, to, deadline).estimateGas({ from: this.account });
       this.swapDetailShow = false;
       this.pendingDetailShow = true;
-      jackRouterContract.methods
+      zyhRouterContract.methods
         .swapExactTokensForETH(amountIn, amountOutMin, path, to, deadline)
         .send({ from: this.account, gas: gasProcessing(gas), gasPrice: web3.utils.numberToHex(this.gasPrice) })
         .on('transactionHash', hash => {
@@ -492,11 +492,11 @@ export default {
         });
     },
     async swapTokensForExactETH(amountOut, amountInMax, path, to, deadline) {
-      const jackRouterContract = useJackRouterContract();
-      const gas = await jackRouterContract.methods.swapTokensForExactETH(amountOut, amountInMax, path, to, deadline).estimateGas({ from: this.account });
+      const zyhRouterContract = usezyhRouterContract();
+      const gas = await zyhRouterContract.methods.swapTokensForExactETH(amountOut, amountInMax, path, to, deadline).estimateGas({ from: this.account });
       this.swapDetailShow = false;
       this.pendingDetailShow = true;
-      jackRouterContract.methods
+      zyhRouterContract.methods
         .swapTokensForExactETH(amountOut, amountInMax, path, to, deadline)
         .send({ from: this.account, gas: gasProcessing(gas), gasPrice: web3.utils.numberToHex(this.gasPrice) })
         .on('transactionHash', hash => {
@@ -519,15 +519,15 @@ export default {
         });
     },
     async swapExactTokensForTokens(amountIn, amountOutMin, path, to, deadline) {
-      const jackRouterContract = useJackRouterContract();
-      const gas = await jackRouterContract.methods
+      const zyhRouterContract = usezyhRouterContract();
+      const gas = await zyhRouterContract.methods
         .swapExactTokensForTokens(amountIn, amountOutMin, path, to, deadline)
         .estimateGas({ from: this.account })
         .catch(async e => {
-          const gas = await jackRouterContract.methods.swapExactTokensForTokensSupportingFeeOnTransferTokens(amountIn, amountOutMin, path, to, deadline).estimateGas({ from: this.account });
+          const gas = await zyhRouterContract.methods.swapExactTokensForTokensSupportingFeeOnTransferTokens(amountIn, amountOutMin, path, to, deadline).estimateGas({ from: this.account });
           this.swapDetailShow = false;
           this.pendingDetailShow = true;
-          jackRouterContract.methods
+          zyhRouterContract.methods
             .swapExactTokensForTokensSupportingFeeOnTransferTokens(amountIn, amountOutMin, path, to, deadline)
             .send({ from: this.account, gas: gasProcessing(gas), gasPrice: web3.utils.numberToHex(this.gasPrice) })
             .on('transactionHash', hash => {
@@ -551,7 +551,7 @@ export default {
         });
       this.swapDetailShow = false;
       this.pendingDetailShow = true;
-      jackRouterContract.methods
+      zyhRouterContract.methods
         .swapExactTokensForTokens(amountIn, amountOutMin, path, to, deadline)
         .send({ from: this.account, gas: gasProcessing(gas), gasPrice: web3.utils.numberToHex(this.gasPrice) })
         .on('transactionHash', hash => {
@@ -574,11 +574,11 @@ export default {
         });
     },
     async swapTokensForExactTokens(amountOut, amountInMax, path, to, deadline) {
-      const jackRouterContract = useJackRouterContract();
-      const gas = await jackRouterContract.methods.swapTokensForExactTokens(amountOut, amountInMax, path, to, deadline).estimateGas({ from: this.account });
+      const zyhRouterContract = usezyhRouterContract();
+      const gas = await zyhRouterContract.methods.swapTokensForExactTokens(amountOut, amountInMax, path, to, deadline).estimateGas({ from: this.account });
       this.swapDetailShow = false;
       this.pendingDetailShow = true;
-      jackRouterContract.methods
+      zyhRouterContract.methods
         .swapTokensForExactTokens(amountOut, amountInMax, path, to, deadline)
         .send({ from: this.account, gas: gasProcessing(gas), gasPrice: web3.utils.numberToHex(this.gasPrice) })
         .on('transactionHash', hash => {
@@ -611,8 +611,8 @@ export default {
       }
       const allPair = getAllPair(this.fromCur, this.toCur);
       const promisePairAddress = allPair.map(item => {
-        const jackFactoryContract = getJackFactoryContract();
-        const pairAddress = jackFactoryContract.methods.getPair(item.fromCur.address, item.toCur.address).call();
+        const zyhFactoryContract = getzyhFactoryContract();
+        const pairAddress = zyhFactoryContract.methods.getPair(item.fromCur.address, item.toCur.address).call();
         return pairAddress;
       });
       let allPairAddress = await Promise.all(promisePairAddress);
@@ -626,8 +626,8 @@ export default {
       }
 
       let promiseReserve = lpPair.map(item => {
-        const jackPairContract = getJackPairContract(item.lpAddress);
-        const reserves = jackPairContract.methods.getReserves().call();
+        const zyhPairContract = getzyhPairContract(item.lpAddress);
+        const reserves = zyhPairContract.methods.getReserves().call();
         return reserves;
       });
 
@@ -703,7 +703,7 @@ export default {
       }
       if (this.account) {
         const erc20Contract = getErc20Contract(this.fromCur.address);
-        const to = getJackRouterAddress();
+        const to = getzyhRouterAddress();
         const allowance = await erc20Contract.methods.allowance(this.account, to).call();
         if (allowance == 0) {
           this.allowanceToRouter = true;
@@ -943,7 +943,7 @@ export default {
     async handleApprove() {
       const erc20Contract = useErc20Contract(this.fromCur.address);
       const amount = MaxUint256.toString();
-      const to = getJackRouterAddress();
+      const to = getzyhRouterAddress();
       const gas = await erc20Contract.methods.approve(to, amount).estimateGas({ from: this.account });
       this.approveLoading = true;
       erc20Contract.methods

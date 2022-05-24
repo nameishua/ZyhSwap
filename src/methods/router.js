@@ -1,4 +1,4 @@
-import { getErc20Contract, getJackFactoryContract, getJackRouterContract, getJackPairContract } from '@/utils/contractHelp';
+import { getErc20Contract, getzyhFactoryContract, getzyhRouterContract, getzyhPairContract } from '@/utils/contractHelp';
 import { MaxUint256 } from '@ethersproject/constants';
 import { formatAmount, parseAmount, accMul, accDiv, toFixed, accAdd, accSub, accGt } from '@/utils/format.js';
 

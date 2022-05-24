@@ -1,22 +1,22 @@
 import store from '@/store';
 
-import { getErc20Contract, getJackRouterContract, getJackFactoryContract, getWethContract } from '@/utils/contractHelp';
+import { getErc20Contract, getzyhRouterContract, getzyhFactoryContract, getWethContract } from '@/utils/contractHelp';
 export const useErc20Contract = address => {
   const { provider } = store.state;
 
   return getErc20Contract(address, provider);
 };
 
-export const useJackRouterContract = () => {
+export const usezyhRouterContract = () => {
   const { provider } = store.state;
 
-  return getJackRouterContract(provider);
+  return getzyhRouterContract(provider);
 };
 
-export const useJackFactoryContract = () => {
+export const usezyhFactoryContract = () => {
   const { provider } = store.state;
 
-  return getJackFactoryContract(provider);
+  return getzyhFactoryContract(provider);
 };
 
 export const useWethContract = () => {

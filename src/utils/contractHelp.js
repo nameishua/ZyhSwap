@@ -1,12 +1,12 @@
 import { simpleRpcProvider } from '@/utils/provider';
-import jackFactoryAbi from '@/config/abi/jackFactory.json';
-import jackRouterAbi from '@/config/abi/jackRouter.json';
-import jackPairAbi from '@/config/abi/jackPair.json';
+import zyhFactoryAbi from '@/config/abi/zyhFactory.json';
+import zyhRouterAbi from '@/config/abi/zyhRouter.json';
+import zyhPairAbi from '@/config/abi/zyhPair.json';
 import wethAbi from '@/config/abi/weth.json';
 
 import erc20Abi from '@/config/abi/erc20.json';
 
-import { getJackFactoryAddress, getJackRouterAddress, getWethAddress } from '@/utils/addressHelp';
+import { getzyhFactoryAddress, getzyhRouterAddress, getWethAddress } from '@/utils/addressHelp';
 
 const getContract = (abi, address, provider) => {
   let signerOrProvider = provider != undefined ? provider : simpleRpcProvider;
@@ -17,16 +17,16 @@ export const getErc20Contract = (address, provider) => {
   return getContract(erc20Abi, address, provider);
 };
 
-export const getJackRouterContract = provider => {
-  return getContract(jackRouterAbi, getJackRouterAddress(), provider);
+export const getzyhRouterContract = provider => {
+  return getContract(zyhRouterAbi, getzyhRouterAddress(), provider);
 };
 
-export const getJackFactoryContract = provider => {
-  return getContract(jackFactoryAbi, getJackFactoryAddress(), provider);
+export const getzyhFactoryContract = provider => {
+  return getContract(zyhFactoryAbi, getzyhFactoryAddress(), provider);
 };
 
-export const getJackPairContract = (address, provider) => {
-  return getContract(jackPairAbi, address, provider);
+export const getzyhPairContract = (address, provider) => {
+  return getContract(zyhPairAbi, address, provider);
 };
 
 export const getWethContract = provider => {

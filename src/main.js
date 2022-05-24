@@ -1,13 +1,17 @@
-import Vue from 'vue';
-import App from './App.vue';
-import router from './router';
-import store from './store';
-import Vant from 'vant';
-import VueI18n from 'vue-i18n';
 import 'vant/lib/index.less';
 import '@vant/touch-emulator';
 
-import Message from '@/components/jackToast/index';
+import Vue from 'vue';
+
+import Vant from 'vant';
+import VueI18n from 'vue-i18n';
+
+import Message from '@/components/zyhToast/index';
+
+import App from './App.vue';
+import router from './router';
+import store from './store';
+
 Vue.use(VueI18n);
 
 const i18n = new VueI18n({

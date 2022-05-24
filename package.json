@@ -2,10 +2,12 @@
   "name": "ZyhSwap",
   "version": "0.1.0",
   "private": true,
+  "homepage":"https://nameishua.github.io/ZyhSwap",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@ethersproject/constants": "^5.4.0",

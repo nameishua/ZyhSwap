@@ -1,6 +1,6 @@
 const ChainId = {
   MAINNET: 56,
-  TESTNET: 3,
+  TESTNET: 97,
 };
 const { MAINNET, TESTNET } = ChainId;
 const web3 = require('web3');
